@@ -18,7 +18,7 @@ export PATH=$PATH:$GOPATH/bin
 ```
 go get github.com/utay/ScalingoTest
 ```
-* Go automatically create a ScalingoTest binary in _GOPATH/bin_
+* Go automatically create a ScalingoTest binary in _GOPATH/bin_.
 
 ### How to use it?
 * Launch the server.
@@ -26,6 +26,4 @@ go get github.com/utay/ScalingoTest
 ./bin/ScalingoTest
 ```
 * Connect your browser to __localhost:4242__
-![alt text](https://github.com/utay/ScalingoTest/tree/master/images/search.png "Search")
 * Search GitHub repositories by name in the 100 last created
-![alt text](https://github.com/utay/ScalingoTest/tree/master/images/results.png "Results")
