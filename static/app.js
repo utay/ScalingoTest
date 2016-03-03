@@ -18,7 +18,6 @@ $.each(window.repositories, function(i, repo) {
         byLanguage[lang.Name].push(repo);
     });
 });
-console.log(byLanguage);
 
 function renderTable() {
   var html = '';
@@ -43,23 +42,23 @@ function renderChartByLanguage() {
 }
 
 function renderChartLinesPerLanguage() {
-    var linesByLanguage = {};
-    $.each(window.repositories, function(i, repo) {
-        $.each(repo.Languages, function(j, lang) {
-            linesByLanguage[lang.Name] = linesByLanguage[lang.Name] || 0;
-            linesByLanguage[lang.Name] += lang.Lines;
-        });
-    });
+  var linesByLanguage = {};
+  $.each(window.repositories, function(i, repo) {
+      $.each(repo.Languages, function(j, lang) {
+          linesByLanguage[lang.Name] = linesByLanguage[lang.Name] || 0;
+          linesByLanguage[lang.Name] += lang.Lines;
+      });
+  });
 
-    var data = [];
-    var i = 0;
-    for (var name in linesByLanguage) {
-        data.push({
-            value: linesByLanguage[name],
-            label: name,
-            color: COLORS[i++ % COLORS.length]
-        });
-    }
+  var data = [];
+  var i = 0;
+  for (var name in linesByLanguage) {
+      data.push({
+          value: linesByLanguage[name],
+          label: name,
+          color: COLORS[i++ % COLORS.length]
+      });
+  }
   var ctx = document.getElementById("lines-per-language").getContext("2d");
   new Chart(ctx).Pie(data);
 }
@@ -89,4 +88,3 @@ $('.sort-by').on('click', function(event) {
 renderTable();
 renderChartByLanguage();
 renderChartLinesPerLanguage();
-
