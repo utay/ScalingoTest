@@ -28,8 +28,10 @@ type Repository struct {
 	Languages []Language
 }
 
-var tmpl = template.Must(template.ParseFiles("src/github.com/utay/ScalingoTest/index.html", "src/github.com/utay/ScalingoTest/search.html"))
+var tmpl = template.Must(template.ParseFiles("src/github.com/utay/ScalingoTest/index.html",
+	"src/github.com/utay/ScalingoTest/search.html"))
 
+// getNewRepositories returns the last X repositories since the ID one.
 func getNewRepositories(client github.Client, ID int) []github.Repository {
 	optall := &github.RepositoryListAllOptions{Since: ID}
 	repos,  _, err := client.Repositories.ListAll(optall)
@@ -39,6 +41,8 @@ func getNewRepositories(client github.Client, ID int) []github.Repository {
 	return repos
 }
 
+// getLastestID returns the ID of the last repository created.
+// It uses the github events list.
 func getLastestID(client github.Client) int {
 	ID := 0
 	for ; ID == 0 ; {
@@ -57,6 +61,7 @@ func getLastestID(client github.Client) int {
 	return ID
 }
 
+// index executes the template of the root page "index.html".
 func index(w http.ResponseWriter, r *http.Request) {
 	err := tmpl.ExecuteTemplate(w, "index.html", nil)
 	if err != nil {
@@ -64,6 +69,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// searchEngine returns the github repositories which are matching with a query.
 func searchEngine(query string, repos []github.Repository) []github.Repository {
 	results := make([]github.Repository, 0)
 	for _, repo := range repos {
@@ -100,6 +106,9 @@ func searchEngine(query string, repos []github.Repository) []github.Repository {
 	return results
 }
 
+// extractData fills the struct Repository with ID, Name, Url, Owner.
+// It calls also the ListLanguages function of the github API to fill the Languages field.
+// This function is called as a goroutine in the function search.
 func extractData(client github.Client, repo github.Repository,
 	results []Repository, i int, wg *sync.WaitGroup) {
 	results[i].ID = *repo.ID
@@ -116,6 +125,11 @@ func extractData(client github.Client, repo github.Repository,
 	wg.Done()
 }
 
+// search fills an array of the 100 last github repositories,
+// filters it whether there is a query or not,
+// starts one goroutine per Repository to extract the data,
+// and converts to json every structs Repository so that JavaScript can use it.
+// This function finally executes the template of the page "search.html".
 func search(w http.ResponseWriter, r *http.Request) {
 	ts := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: "90c7a3fbf7e2a3c27c29ddb4600db0db67478ac0"},
@@ -136,10 +150,12 @@ func search(w http.ResponseWriter, r *http.Request) {
 	}
 	results := make([]Repository, len(repos))
 	var wg sync.WaitGroup
+	// Start goroutines
 	for i, repo := range repos {
 		wg.Add(1)
 		go extractData(*client, repo, results, i, &wg)
 	}
+	// Wait goroutines
 	wg.Wait()
 	var args SearchArgs
 	array, _ := json.Marshal(results)
@@ -147,6 +163,8 @@ func search(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "search.html", args)
 }
 
+// main sets the maximum number of CPUs that can be executing simultaneously,
+// handles connexion and listen to port 4242.
 func main() {
 	runtime.GOMAXPROCS(8)
 	http.HandleFunc("/", index)
