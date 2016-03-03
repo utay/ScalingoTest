@@ -23,6 +23,7 @@ go get github.com/utay/ScalingoTest
 ### How to use it?
 * Launch the server.
 ```
+cd $GOPATH
 ./bin/ScalingoTest
 ```
 * Connect your browser to __localhost:4242__
