@@ -27,6 +27,9 @@ cd $GOPATH
 ./bin/ScalingoTest
 ```
 * Connect your browser to __localhost:4242__
+* Search.
+
 ![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/search.png?raw=true "Search")
-* Search GitHub repositories by name in the 100 last created
+* Get the results!
+
 ![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/results.png?raw=true "Results")
