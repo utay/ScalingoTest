@@ -28,7 +28,7 @@ type Repository struct {
 	Languages []Language
 }
 
-var tmpl = template.Must(template.ParseFiles("../src/github.com/utay/ScalingoTest/index.html", "../src/github.com/utay/ScalingoTest/search.html"))
+var tmpl = template.Must(template.ParseFiles("src/github.com/utay/ScalingoTest/index.html", "src/github.com/utay/ScalingoTest/search.html"))
 
 func getNewRepositories(client github.Client, ID int) []github.Repository {
 	optall := &github.RepositoryListAllOptions{Since: ID}
@@ -151,7 +151,7 @@ func main() {
 	runtime.GOMAXPROCS(8)
 	http.HandleFunc("/", index)
 	http.HandleFunc("/search", search)
-	fs := http.FileServer(http.Dir("../src/github.com/utay/ScalingoTest/static"))
+	fs := http.FileServer(http.Dir("src/github.com/utay/ScalingoTest/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	err := http.ListenAndServe(":4242", nil)
 	if err != nil {
