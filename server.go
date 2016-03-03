@@ -28,7 +28,7 @@ type Repository struct {
 	Languages []Language
 }
 
-var tmpl = template.Must(template.ParseFiles("../src/index.html", "../src/search.html"))
+var tmpl = template.Must(template.ParseFiles("../scripts/index.html", "../scripts/search.html"))
 
 func getNewRepositories(client github.Client, ID int) []github.Repository {
 	optall := &github.RepositoryListAllOptions{Since: ID}
