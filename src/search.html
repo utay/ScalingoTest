@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="text-center">Last repositories</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Id
+                  <a class="sort-by" href="#" data-attr="ID" data-order="asc" data-number="1">↑</a>
+                  <a class="sort-by" href="#" data-attr="ID" data-order="desc" data-number="1">↓</a>
+                </th>
+                <th>
+                  Name
+                  <a class="sort-by" href="#" data-attr="Name" data-order="asc">↑</a>
+                  <a class="sort-by" href="#" data-attr="Name" data-order="desc">↓</a>
+                </th>
+                <th>
+                  Language
+                </th>
+              </tr>
+            </thead>
+            <tbody id="repositories"></tbody>
+          </table>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3 class="text-center"># Repositories by Language</h3>
+          <canvas id="by-language"></canvas>
+
+          <h3 class="text-center"># Lines by language</h3>
+          <canvas id="lines-per-language"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    <script type="text/javascript">
+      window.repositories = JSON.parse({{.Repositories}});
+    </script>
+    <script type="text/javascript" src="/static/app.js"></script>
+  </body>
+</html>
