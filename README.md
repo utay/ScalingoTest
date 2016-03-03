@@ -14,7 +14,7 @@ export GOPATH=$HOME/path/to/your/repository
 ```
 export PATH=$PATH:$GOPATH/bin
 ```
-* Get the __ScalingoTest project__.
+* Get the __ScalingoTest application__.
 ```
 go get github.com/utay/ScalingoTest
 ```
