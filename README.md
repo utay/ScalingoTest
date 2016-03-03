@@ -1,4 +1,4 @@
-## ScalingoTest: Get the 100 last gtihub repositories created
+## ScalingoTest: Get the 100 last GitHub repositories created
 
 ### Installation
 * Install go.
@@ -10,7 +10,7 @@ sudo apt-get install go
 mkdir $HOME/path/to/your/repository
 export GOPATH=$HOME/path/to/your/repository
 ```
-* Add the workspace's _bin_ subdirectory to your _PATH_:
+* Add the workspace's _bin_ subdirectory to your _PATH_.
 ```
 export PATH=$PATH:$GOPATH/bin
 ```
@@ -26,7 +26,7 @@ go get github.com/utay/ScalingoTest
 cd $GOPATH
 ./bin/ScalingoTest
 ```
-* Connect your browser to __localhost:4242__
+* Connect your browser to __localhost:4242__.
 * Search.
 
 ![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/search.png?raw=true "Search")
