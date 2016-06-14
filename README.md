@@ -18,7 +18,7 @@ export PATH=$PATH:$GOPATH/bin
 ```
 go get github.com/utay/ScalingoTest
 ```
-* Go automatically create a ScalingoTest binary in _GOPATH/bin_.
+* Go automatically creates a ScalingoTest binary in _GOPATH/bin_.
 
 ### How to use it?
 * Launch the server.
