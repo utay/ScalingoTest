@@ -33,3 +33,4 @@ cd $GOPATH
 * Get the results!
 
 ![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/results.png?raw=true "Results")
+test
