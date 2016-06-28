@@ -20,7 +20,7 @@ go get github.com/utay/ScalingoTest
 ```
 * Go will automatically create a ScalingoTest binary in _GOPATH/bin_.
 
-## How to use it?
+## Usage
 * Launch the server.
 ```
 cd $GOPATH
