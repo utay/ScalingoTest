@@ -1,4 +1,4 @@
-## ScalingoTest: Get the 100 last GitHub repositories created
+## ScalingoTest: Get the 100 last Github repositories created
 
 ### Installation
 * Install go.
