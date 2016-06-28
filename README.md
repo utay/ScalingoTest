@@ -1,6 +1,6 @@
-## ScalingoTest: Get the 100 last GitHub repositories created
+## ScalingoTest: Get the 100 last Github repositories created
 
-### Installation
+## Installation
 * Install go.
 ```
 sudo apt-get install go
@@ -20,7 +20,7 @@ go get github.com/utay/ScalingoTest
 ```
 * Go will automatically create a ScalingoTest binary in _GOPATH/bin_.
 
-### How to use it?
+## Usage
 * Launch the server.
 ```
 cd $GOPATH
