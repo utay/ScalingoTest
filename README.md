@@ -32,4 +32,4 @@ cd $GOPATH
 ![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/search.png?raw=true "Search")
 * Get the results!
 
-![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/results.png?raw=true "Results") 
+![Alt text](https://github.com/utay/ScalingoTest/blob/master/images/results.png?raw=true "Results")
